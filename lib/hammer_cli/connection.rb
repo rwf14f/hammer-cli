@@ -15,12 +15,13 @@ module HammerCLI
       connections.keys.each { |c| drop(c) }
     end
 
-    def self.create(name, conector_params={}, options={})
+    def self.create(name, connector_params={}, options={})
       unless connections[name]
         Logging.logger['Connection'].debug "Registered: #{name}"
         connector = options[:connector] || AbstractConnector
 
-        connections[name] = connector.new(conector_params)
+        options.delete(:connector) unless options[:connector].nil?
+        connections[name] = connector.new(connector_params, options)
       end
       connections[name]
     end
