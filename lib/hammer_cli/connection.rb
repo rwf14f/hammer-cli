@@ -1,7 +1,7 @@
 module HammerCLI
 
   class AbstractConnector
-    def initialize(params={})
+    def initialize(params={}, options={})
     end
   end
 
