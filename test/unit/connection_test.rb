@@ -14,7 +14,7 @@ describe HammerCLI::Connection do
 
     attr_reader :url
 
-    def initialize(params)
+    def initialize(params, options)
       @url = params[:url]
       super
     end
