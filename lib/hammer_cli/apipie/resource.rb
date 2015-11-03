@@ -7,7 +7,12 @@ module HammerCLI::Apipie
     attr_reader :api
 
     def initialize(params)
-      @api = ApipieBindings::API.new(params)
+      options = {}
+      if params[:rc_options]
+        options = params[:rc_options]
+        params.delete(:rc_options)
+      end
+      @api = ApipieBindings::API.new(params, options)
       if HammerCLI::Settings.get(:_params, :reload_cache) || HammerCLI::Settings.get(:reload_cache)
         @api.clean_cache
         Logging.logger['Init'].debug 'Apipie cache was cleared'
