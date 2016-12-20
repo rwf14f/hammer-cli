@@ -5,7 +5,7 @@ module HammerCLI::Apipie
 
     def initialize(params, options = {})
       @logger = options[:logger]
-      @api = ApipieBindings::API.new(params)
+      @api = ApipieBindings::API.new(params, options[:rc_options])
       if options[:reload_cache]
         @api.clean_cache
         @logger.debug 'Apipie cache was cleared' unless @logger.nil?
