@@ -13,7 +13,6 @@ script: "bundle exec rake test"
 matrix:
   fast_finish: true
   include:
-  - rvm: 1.9.3
   - rvm: 2.1.5
 notifications:
   email:
