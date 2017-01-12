@@ -1,0 +1,20 @@
+---
+language: ruby
+cache:
+  directories:
+  - vendor/bundle
+#  - spec/fixtures/modules
+sudo: false
+branches:
+  only:
+    - travis_testing
+bundler_args: --without system_tests
+script: "bundle exec rake test"
+matrix:
+  fast_finish: true
+  include:
+  - rvm: 1.9.3
+  - rvm: 2.1.5
+notifications:
+  email:
+    - rwf14f@gmail.com
